@@ -36,11 +36,13 @@ server.use(bp.json());
 
 //NOTE we have to import access to our controllers
 import GalaxyController from "./controllers/GalaxyController";
-import StarController from "./controllers/StarController"
+import StarController from "./controllers/StarController";
+import PlanetController from "./controllers/PlanetController";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/galaxy", new GalaxyController().router);
 server.use("/api/star", new StarController().router);
+server.use("/api/planet", new PlanetController().router);
 
 //NOTE Everything below this line always stays the same
 
