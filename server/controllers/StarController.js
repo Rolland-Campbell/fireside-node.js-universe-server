@@ -1,6 +1,5 @@
 import express from "express";
 import starService from "../services/StarService"
-import { startSession } from "mongoose";
 
 export default class StarController {
   constructor(){

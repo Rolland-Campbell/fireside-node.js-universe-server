@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import Star from "../models/Star";
 
-const _repository = mongoose.model("Star", Star)
+const _repository = mongoose.model("star", Star)
 
 class StarService {
 
