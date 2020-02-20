@@ -14,7 +14,7 @@ export default class SpeciesController {
 
   async getAll(req, res, next){
     try {
-      let data = speciesService.getAll()
+      let data = await speciesService.getAll()
       return res.status(201).send(data)
     } catch (error) {
       next(error)

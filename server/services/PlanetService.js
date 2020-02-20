@@ -22,9 +22,21 @@ class PlanetService {
     return await _repository.create(body)
   }
   
-async addSpecies(body){
-  let speciesId = speciesService.getById(body.speciesId)
-  return await _repository.findByIdAndUpdate(body.id, speciesId)
+async addSpecies(id, speciesId){
+  return await _repository.findByIdAndUpdate(id, {$push: {species: speciesId}}) //NOTE uses mongoose push method.
+  // let planet = await _repository.findById(id)
+  // // @ts-ignore
+  // planet.species.push(speciesId)
+  // await planet.save()
+  // return planet
+}
+
+async removeSpecies(id, speciesId){
+  let planet = await _repository.findById(id)
+  // @ts-ignore
+  planet.species.splice(speciesId) //NOTE Could also reference planet["species"] to clear type script error.  
+  await planet.save()
+  return planet
 }
 
   async edit(id, update){

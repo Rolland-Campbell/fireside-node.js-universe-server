@@ -13,6 +13,7 @@ export default class PlanetController {
     .post("", this.create)
     .put("/:id", this.edit)
     .put("/:id/addSpecies/:speciesId", this.addSpecies)
+    .put("/:id/removeSpecies/:speciesId", this.removeSpecies)
     .delete("/:id", this.delete)
   }
 
@@ -53,12 +54,21 @@ async getSatelites(req, res, next){
   }
   
   async addSpecies(req, res, next){
-try {
-  let data = await planetService.addSpecies(req.body)
-  res.send(data)
-} catch (error) {
-  next(error)
-}
+    try {
+      let data = await planetService.addSpecies(req.params.id, req.params.speciesId)
+      res.send(data)
+    } catch (error) {
+       next(error)
+    }
+  }
+
+  async removeSpecies(req, res, next){
+    try {
+      let data = await planetService.removeSpecies(req.params.id, req.params.speciesId)
+      res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
   async edit(req, res, next){
     try {
