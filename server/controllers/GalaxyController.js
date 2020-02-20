@@ -1,5 +1,6 @@
 import express from "express";
 import galaxyService from "../services/GalaxyService";
+import starService from "../services/StarService";
 
 export default class GalaxyController {
   constructor() {
@@ -8,6 +9,7 @@ export default class GalaxyController {
       //NOTE  each route gets registered as a .get, .post, .put, or .delete, the first parameter of each method is a string to be concatinated onto the base url registered with the route in main. The second parameter is the method that will be run when this route is hit.
       .get("", this.getAll)
       .get("/:id", this.getById)
+      .get("/:id/star", this.getGalaxyStars)
       .post("", this.create)
       .put("/:id", this.edit)
       .delete("/:id", this.delete)
@@ -28,6 +30,15 @@ export default class GalaxyController {
       res.send(data);
     } catch (error) {
       next(error);
+    }
+  }
+
+  async getGalaxyStars(req, res, next){
+    try {
+      let data = await starService.getStars(req.params.id)
+      res.send(data)
+    } catch (error) {
+      next(error)
     }
   }
 

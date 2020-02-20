@@ -13,6 +13,9 @@ async getById(id){
   return await _repository.findById(id)
 }
 
+async getSatelites(planetId){
+return await _repository.find({planetId: planetId})
+}
 async create(body){
   return await _repository.create(body)
 }

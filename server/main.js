@@ -39,12 +39,14 @@ import GalaxyController from "./controllers/GalaxyController";
 import StarController from "./controllers/StarController";
 import PlanetController from "./controllers/PlanetController";
 import SatelliteController from "./controllers/SateliteController";
+import SpeciesController from "./controllers/SpeciesController"
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/galaxy", new GalaxyController().router);
 server.use("/api/star", new StarController().router);
 server.use("/api/planet", new PlanetController().router);
 server.use("/api/satelite", new SatelliteController().router);
+server.use("/api/species", new SpeciesController().router);
 
 //NOTE Everything below this line always stays the same
 

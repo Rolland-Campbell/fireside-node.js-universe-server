@@ -9,8 +9,9 @@ class GalaxyService {
   }
 
   async getById(id){
-return await _repository.findById(id)
+    return await _repository.findById(id)
   }
+
   async  create(body) {
     return await _repository.create(body)
   }

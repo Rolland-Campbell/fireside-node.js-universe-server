@@ -3,6 +3,7 @@ import Star from "../models/Star";
 
 const _repository = mongoose.model("star", Star)
 
+
 class StarService {
 
 async getAll(){
@@ -11,6 +12,10 @@ async getAll(){
 
 async getById(id){
   return _repository.findById(id)
+}
+
+async getStars(id){
+  return await _repository.find({galaxyId:id})
 }
 
 async create(body){

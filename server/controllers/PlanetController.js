@@ -1,5 +1,7 @@
 import express from "express";
 import planetService from "../services/PlanetService";
+import sateliteService from "../services/SateliteService";
+import speciesService from "../services/SpeciesService";
 
 export default class PlanetController {
   constructor(){
@@ -7,8 +9,10 @@ export default class PlanetController {
     .Router()
     .get("", this.getAll)
     .get("/:id", this.getById)
+    .get("/:id/satelite", this.getSatelites)
     .post("", this.create)
     .put("/:id", this.edit)
+    .put("/:id/addSpecies/:speciesId", this.addSpecies)
     .delete("/:id", this.delete)
   }
 
@@ -30,6 +34,15 @@ export default class PlanetController {
     }
   }
   
+async getSatelites(req, res, next){
+  try {
+    let data = await sateliteService.getSatelites(req.params.id)
+    res.send(data);
+  } catch (error) {
+    next(error)
+  }
+}
+
   async create(req, res, next){
     try {
       let data = await planetService.create(req.body)
@@ -39,6 +52,14 @@ export default class PlanetController {
     }
   }
   
+  async addSpecies(req, res, next){
+try {
+  let data = await planetService.addSpecies(req.body)
+  res.send(data)
+} catch (error) {
+  next(error)
+}
+  }
   async edit(req, res, next){
     try {
       let data = await planetService.edit(req.params.id, req.body)

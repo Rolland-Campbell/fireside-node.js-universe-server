@@ -5,9 +5,9 @@ var ObjectId = mongoose.SchemaTypes.ObjectId;
 
 const Planet = new Schema(
   {
-    galaxyId: {type: ObjectId, ref:"galaxy", required: true},
     starId: {type: ObjectId, ref:"star", required: true},
     name: {type: String, required: true},
+    species: [{type: ObjectId, ref: "species"}]
   }
 );
 
