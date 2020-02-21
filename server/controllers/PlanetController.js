@@ -56,6 +56,7 @@ async getSatelites(req, res, next){
   async addSpecies(req, res, next){
     try {
       let data = await planetService.addSpecies(req.params.id, req.params.speciesId)
+      //NOTE req.params = pojo from front end. We are stripping off the planet id, and species id. 
       res.send(data)
     } catch (error) {
        next(error)

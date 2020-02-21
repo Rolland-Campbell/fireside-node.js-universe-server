@@ -14,8 +14,8 @@ async getById(id){
   return _repository.findById(id)
 }
 
-async getStars(id){
-  return await _repository.find({galaxyId:id})
+async getStars(galaxyId){
+  return await _repository.find({galaxyId:galaxyId})
 }
 
 async create(body){

@@ -35,7 +35,7 @@ export default class GalaxyController {
 
   async getGalaxyStars(req, res, next){
     try {
-      let data = await starService.getStars(req.params.id)
+      let data = await starService.getStars(req.params.id) //NOTE this is the Galaxy Id
       res.send(data)
     } catch (error) {
       next(error)
